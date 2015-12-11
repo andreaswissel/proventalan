@@ -1,0 +1,38 @@
+<div class="ladder" style="position:absolute; top: 0; bottom: 50px; left: 0; right: 0;" ng-controller="LadderController as ladder">
+  <md-content ng-if="!ladder.showLadderOutput">
+    <md-list>
+      <md-subheader class="md-no-sticky">Teamsize</md-subheader>
+      <md-list-item class="md-3-line">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Teamsize</label>
+          <input ng-model="ladder.teamsize">
+        </md-input-container>
+      </md-list-item>
+      <md-subheader class="md-no-sticky">Participants</md-subheader>
+      <md-list-item class="md-3-line" ng-repeat="item in ladder.participants">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Participant Name</label>
+          <input ng-model="item.name">
+        </md-input-container>
+      </md-list-item>
+      <md-button ng-click="ladder.addParticipant()">Add Participant</md-button>
+      <md-button ng-click="ladder.createLadder()">Create Ladder</md-button>
+    </md-list>
+  </md-content>
+  <md-content ng-if="ladder.showLadderOutput">
+    <md-subheader class="md-no-sticky">Teams</md-subheader>
+
+    <md-list-item class="md-3-line">
+      <ul>
+        <li ng-repeat="team in ladder.teams">
+          Team {{ $index + 1 }}
+          <ul>
+            <li ng-repeat="member in team">
+              {{ member.name }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </md-list-item>
+  </md-content>
+</div>

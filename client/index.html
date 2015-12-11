@@ -1,0 +1,32 @@
+<html ng-app="proventalan">
+<head>
+  <title>ProventaLAN Client</title>
+
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <div ng-view>
+    Loading ProventaLAN Client...
+  </div>
+
+  <script src="./bower_components/angular/angular.min.js"></script>
+  <script src="./bower_components/angular-route/angular-route.min.js"></script>
+  <script src="./bower_components/angular-aria/angular-aria.js"></script>
+  <script src="./bower_components/angular-animate/angular-animate.js"></script>
+  <script src="./bower_components/angular-material/angular-material.js"></script>
+  <script src="./bower_components/lodash/lodash.min.js"></script>
+  <script src="./bower_components/socket.io-client/socket.io.js"></script>
+  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="./app.js"></script>
+  <script src="./components/chat/chat_controller.js"></script>
+  <script src="./components/chat/chat_service.js"></script>
+  <script src="./components/ladder/ladder.controller.js"></script>
+  <script>
+    var socket = io('http://192.241.242.106:1337');
+  </script>
+</body>
+</html>

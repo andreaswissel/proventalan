@@ -1,0 +1,54 @@
+<div ng-controller="ChatController as chat">
+  <div id="nickname">
+    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" ng-if="!chat.active">
+      <div flex="50" layout="column">
+        <md-card>
+          <md-card-title style="    padding: 24px 16px 16px;">
+            <md-card-title-text>
+              <span class="md-headline">Tell me your nickname</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Your Nickname</label>
+              <input ng-model="chat.username">
+            </md-input-container>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="chat.setUsername(chat.username)">Let's chat</md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </md-content>
+  </div>
+  <div class="history" style="position:absolute; top: 0; bottom: 50px; left: 0; right: 0;" ng-if="chat.active">
+    <md-content>
+      <md-list>
+        <md-subheader class="md-no-sticky">Chat History</md-subheader>
+        <md-divider ></md-divider>
+        <div id="history_container" style="overflow-y: scroll; position: fixed; top: 45px; bottom: 60px; left: 0; right: 0; padding-bottom: 50px;">
+          <md-list-item class="md-3-line" ng-repeat="item in chat.history">
+            <!--<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />-->
+            <div class="md-list-item-text" layout="column">
+              <h3 ng-if="item.username == chat.username" style="color: {{ chat.getClientColor(item.username) }};">Me:</h3>
+              <h3 ng-if="item.username != chat.username" style="color: {{ chat.getClientColor(item.username) }};">{{ item.username }}:</h3>
+              <h4>{{ item.message }}</h4>
+              <p>{{ item.notes }}</p>
+            </div>
+            <md-divider ></md-divider>
+          </md-list-item>
+        </div>
+      </md-list>
+    </md-content>
+  </div>
+  <div style="position: fixed; bottom: 0; right: 0; left: 0;">
+    <md-content layout-padding>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Your Message..</label>
+          <input ng-model="chat.message" ng-keydown="chat.keydown($event)">
+        </md-input-container>
+      </div>
+    </md-content>
+  </div>
+</div>
